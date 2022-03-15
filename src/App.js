@@ -10,7 +10,7 @@ class App extends Component {
     const Fingerprint = new FingerprintSdk()
     this.setState({ Fingerprint },
       () => {
-        console.log(this.state.Fingerprint)
+        console.log(navigator)
         this.state.Fingerprint.getDeviceList()
         .then(devices => this.setState({ deviceId: devices[0] }), error => console.log(error))
       }
@@ -32,6 +32,7 @@ class App extends Component {
   }
 
   getInfo = () => {
+    console.log(this.state)
     this.state.Fingerprint.getDeviceList()
     .then(devices => this.setState({ deviceId: devices[0] }), error => console.log(error))
     
@@ -50,6 +51,7 @@ class App extends Component {
 
   render() {
     const { deviceId } = this.state
+    console.log('>', this.state)
 
     const connected = deviceId !== "" ? `Conectado a ${deviceId}` : "No hay lectores de huella conectados"
 

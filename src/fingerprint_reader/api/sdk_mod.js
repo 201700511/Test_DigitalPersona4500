@@ -1,6 +1,7 @@
 const Fingerprint = window.Fingerprint
 
 const FingerprintSdk = (function () {
+    console.log('>>>', window)
     function FingerprintSdk() {
         this.sdk = new Fingerprint.WebApi()
 
@@ -12,6 +13,8 @@ const FingerprintSdk = (function () {
     FingerprintSdk.prototype.getDeviceList = function () { return this.sdk.enumerateDevices() }
 
     FingerprintSdk.prototype.startCapture = function () {
+        return console.log('Capturando huella')
+        
         this.sdk.startAcquisition(Fingerprint.SampleFormat.PngImage).then(function () {
             return console.log('Capturando huella')
         }, function (error) {
